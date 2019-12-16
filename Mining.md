@@ -240,7 +240,9 @@ Do note that the largest index must correspond to the number of GPUs you have ph
 11. To stop the mining client, stop your running docker container:
 
       ```
+      sudo docker ps (get zilliqa's CONTAINER_ID here)
       sudo docker stop zilliqa
+      sudo docker rm CONTAINER_ID
       ```
 
 ## Mining with docker remotely
@@ -396,7 +398,7 @@ For hooking up several GPU rigs in the GPU cluster to a single CPU node, you wil
 8. Clone the Zilliqa repository and change directory to it:
 
       ```
-      cd ~/Desktop && git clone https://github.com/Zilliqa/Zilliqa.git Zilliqa && cd Zilliqa && git checkout v5.1.1
+      cd ~/Desktop && git clone https://github.com/Zilliqa/Zilliqa.git Zilliqa && cd Zilliqa && git checkout v6.0.0
       ```
 
 9. Find out your Zilliqa directory path again and write it down:
@@ -415,7 +417,7 @@ For hooking up several GPU rigs in the GPU cluster to a single CPU node, you wil
         libssl-dev libleveldb-dev libjsoncpp-dev libsnappy-dev cmake libmicrohttpd-dev \
         libjsonrpccpp-dev build-essential pkg-config libevent-dev libminiupnpc-dev \
         libprotobuf-dev protobuf-compiler libcurl4-openssl-dev libboost-program-options-dev \
-        libssl-dev
+        libssl-dev libboost-python-dev python3-dev python3-setuptools python3-pip
         ```
 
     - **(Option 1)** Build Zilliqa for CPU mining:
@@ -466,6 +468,7 @@ For hooking up several GPU rigs in the GPU cluster to a single CPU node, you wil
     sudo apt install python-pip
     export LC_ALL=C
     pip install request requests clint futures
+    pip3 install requests clint futures
     ```
 
 16. Launch the Zilliqa client:
