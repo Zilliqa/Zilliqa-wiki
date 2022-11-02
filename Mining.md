@@ -95,38 +95,20 @@ The **minimum** requirements for Zilliqa mining nodes are:
    - Intel Xeon (Skylake)
    - AMD Ryzen
 - 4GB DRR3 RAM or higher
-- NAT environment **OR** Public IP address
+- Public IP address
 - Any GPUs with at least 2 GB vRAM
 
 ## Initial Setup
 
 ### Network setup
 
-> **NOTE:** If you are using a home router, you are most probably in a NAT environment.
+If you have a public IP address and not behind a NAT environment.
 
-If you are in NAT environment, you can either:
+> **NOTE:** If you are using a home router, you are most probably in a NAT environment. If your Internet Serivce Provider (ISP) puts you behind a NAT environment on their end, you will need to acquire a static IP address with your ISP.
 
-- Do single port forwarding using **Option 1a**. This should be your **DEFAULT OPTION**.
-- Enable UPnP mode using **Option 1b** if your router does support UPnP.
+If you are in NAT environment, you can:
 
-If you have a public IP address, you can skip this network setup entirely.
-
-- **(Option 1a)** Port forward to port `33133` for both external port (port range) and internal port (local port). You will also have to select the option for **BOTH** TCP and UDP protocol in your router menu when port forwarding. <br><br> An example of this process can be found [**HERE**](https://www.linksys.com/us/support-article?articleNum=136711). After port forwarding, you may check if you have successfully port forwarded with this [**Open Port Check Tool**](https://www.yougetsignal.com/tools/open-ports/).
-
-- **(Option 1b)** Enable UPnP mode on your home router. Please Google how to access your home router setting to enable UPnP, an example can be found [**HERE**](https://routerguide.net/how-to-enable-upnp-for-rt-ac66u/). You can check if you have successfully enabled UPnP by installing the following tool:
-    ```shell
-    sudo apt-get install miniupnpc
-    ```
-   Then type the following in the command line:
-    ```shell
-    upnpc -s
-    ```
-   You should get a message showing either:
-
-     - "List of UPNP devices found on the network : ..."
-     - **OR** "No IGD UPnP Device found on the network !".
-
-   The first message means UPnP mode has been enabled successfully, while the latter means the enabling of UPnP mode has failed. If you receive the latter message, proceed with using **Option 1a** instead.
+- Port forward to port `33133` for both external port (port range) and internal port (local port). You will also have to select the option for **BOTH** TCP and UDP protocol in your router menu when port forwarding. <br><br> An example of this process can be found [**HERE**](https://www.linksys.com/us/support-article?articleNum=136711). After port forwarding, you may check if you have successfully port forwarded with this [**Open Port Check Tool**](https://www.yougetsignal.com/tools/open-ports/).
 
 ### OpenCL driver setup (for AMD/Nvidia)
 
@@ -207,7 +189,7 @@ Do note that the largest index must correspond to the number of GPUs you have ph
 7. You will be prompted to enter some information as shown below:
     - `Assign a name to your container (default: zilliqa):` <br> [Press **Enter** to skip if using default]
 
-    - `Enter your IP address ('NAT' or *.*.*.*):` <br> [Key in your IP address as found in step 6 **OR** `NAT` if you using Option 1b]
+    - `Enter your IP address (*.*.*.*):` <br> [Key in your IP address as found in step 6]
 
     - `Enter your listening port (default: 33133):` <br> [Press **Enter** to skip if using default]
 
@@ -301,7 +283,7 @@ For hooking up several GPU rigs in the GPU cluster to a single CPU node, you wil
 8. You will be prompted to enter some information as shown below:
     - `Assign a name to your container (default: zilliqa):` <br> [Press **Enter** to skip if using default]
 
-    - `Enter your IP address ('NAT' or *.*.*.*):` <br> [Key in your IP address as found in step 5 **OR** `NAT` if you chose Option 1b during Network setup]
+    - `Enter your IP address (*.*.*.*):` <br> [Key in your IP address as found in step 5]
 
     - `Enter your listening port (default: 33133):` <br> [Press **Enter** to skip if using default]
 
@@ -484,7 +466,7 @@ For hooking up several GPU rigs in the GPU cluster to a single CPU node, you wil
 
 17. You will be prompted to key in the following details:
     - `Enter the full path of your zilliqa source code directory:` <br> [Key in the path you found it step 8]
-    - `Enter your IP address (NAT or *.*.*.*):` <br> [Key in your IP address as found in step 13 **OR** `NAT` if you are using Option 1b]
+    - `Enter your IP address (*.*.*.*):` <br> [Key in your IP address as found in step 13]
     - `Enter your listening port (default: 33133):` <br> [Press **Enter** to skip if using default]
 
        > **NOTE:** **DO NOT** duplicate your IP address and use different ports on different CPU nodes. You will be blacklisted by the network and hence not be able to receive any flexible rewards.
